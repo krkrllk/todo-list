@@ -4,3 +4,4 @@ import "controllers"
 import "bootstrap"
 import "@popperjs/core"
 import "bootstrap/dist/css/bootstrap";
+import "../stylesheets/application.scss";

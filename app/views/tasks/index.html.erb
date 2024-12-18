@@ -1,28 +1,38 @@
-<h1 class="mb-4">To-Do List</h1>
-<%= link_to 'New Task', new_task_path, class: "btn btn-primary mb-3" %>
+<div class="container mt-5">
+  <div class="card shadow-sm border-0">
+    <div class="card-header bg-primary text-white text-center">
+      <h1 class="mb-0">To-Do List</h1>
+    </div>
+    <div class="card-body">
+      <div class="d-flex justify-content-end mb-3">
+        <%= link_to 'New Task', new_task_path, class: "btn btn-success px-4" %>
+      </div>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Status</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @tasks.each do |task| %>
-      <tr>
-        <td><%= task.title %></td>
-        <td>
-          <span class="badge <%= task.completed ? 'bg-success' : 'bg-warning' %>">
-            <%= task.completed ? "Completed" : "Pending" %>
-          </span>
-        </td>
-        <td>
-          <%= link_to 'Edit', edit_task_path(task), class: "btn btn-sm btn-outline-secondary" %>
-          <%= link_to 'Delete', task_path(task), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-outline-danger" %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <table class="table table-hover table-bordered text-center">
+        <thead class="table-dark">
+          <tr>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @tasks.each do |task| %>
+            <tr>
+              <td class="align-middle fw-bold"><%= task.title %></td>
+              <td class="align-middle">
+                <span class="badge fs-6 <%= task.completed ? 'bg-success' : 'bg-warning text-dark' %>">
+                  <%= task.completed ? "Completed" : "Pending" %>
+                </span>
+              </td>
+              <td class="align-middle">
+                <%= link_to 'Edit', edit_task_path(task), class: "btn btn-sm btn-outline-primary me-2" %>
+                <%= link_to 'Delete', task_path(task), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-outline-danger" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
